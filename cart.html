@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Cart - GT Holidays</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./images/favicon-32x32.png" />
+  <link rel="stylesheet" href="./css/cart.css">
+
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="./images/Logo.jpg" alt="Logo" class="rounded float-start">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item position-relative">
+            <a class="nav-link active" href="cart.html">
+              <i class="bi bi-cart-fill fs-5"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                id="cartCountBadge">
+                0
+              </span>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Bookings Banner -->
+  <div class="text-dark text-center py-5 banner">
+    <h1 class="display-4 fw-bold">Your Bookings</h1>
+    <p class="lead">Manage your selected packages and plan your perfect getaway.</p>
+  </div>
+
+  <!-- Cart Section -->
+  <div class="container mt-5">
+    <h2 class="mb-4">Your Selected Packages</h2>
+    <div id="cartItems" class="row"></div>
+    <div class="text-end mt-4">
+      <h4>Total: ₹<span id="cartTotal">0</span></h4>
+      <button class="btn btn-danger mt-2" onclick="clearCart()">Clear Cart</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Cart Logic -->
+  <script>
+    function getCartItems() {
+      const cart = localStorage.getItem('tourCart');
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function removeItem(index) {
+      const cart = getCartItems();
+      cart.splice(index, 1);
+      localStorage.setItem('tourCart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem('tourCart');
+      renderCart();
+    }
+
+    function renderCart() {
+      const cart = getCartItems();
+      const cartContainer = document.getElementById('cartItems');
+      const badge = document.getElementById('cartCountBadge');
+      const totalElem = document.getElementById('cartTotal');
+
+      cartContainer.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+        totalElem.innerText = '0';
+        badge.innerText = '0';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        cartContainer.innerHTML += `
+          <div class="col-md-6 mb-3">
+            <div class="card shadow-sm">
+              <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                  <h5 class="card-title">${item.name}</h5>
+                  <p class="card-text mb-0">Price: ₹${item.price}</p>
+                </div>
+                <button class="btn btn-outline-danger btn-sm" onclick="removeItem(${index})">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      totalElem.innerText = total;
+      badge.innerText = cart.length;
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal-dialog">
+      <div class="modal-content custom-modal-content text-center">
+        <div class="modal-body">
+          <div class="modal-icon-wrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Success" class="modal-icon" />
+          </div>
+          <h6 class="modal-title text-success" id="successModalLabel">Subscription Successful!</h6>
+          <p class="modal-text">Thank you for subscribing to <strong>GT Holidays</strong>.</p>
+          <button type="button" class="btn btn-success btn-sm modal-button" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <section class="bg-light py-5 border-top mt-5">
+    <div class="container text-center">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-md-start mb-3 mb-md-0">
+          <h5 class="mb-1">Get Updates & More</h5>
+          <small class="text-muted">Thoughtful thoughts to your inbox</small>
+        </div>
+        <div class="col-md-6">
+          <form class="d-flex justify-content-center justify-content-md-end"
+            onsubmit="sendNewsletterSubscription(event)">
+            <input type="email" class="form-control me-2 w-50" placeholder="Your Email" id="newsletterEmail" required
+              name="to_email">
+            <button type="submit" class="btn btn-dark">SUBSCRIBE</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container text-md-start text-center">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <h5>Corporate Office</h5>
+          <hr class="border-light">
+          <p>GT Holidays Pvt LTD,<br>Novel Tech Park,<br>Opposite to 1 MG Mall,<br>MG Road, Bangalore –
+            560042<br>Karnataka, India.</p>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Head Office</h5>
+          <hr class="border-light">
+          <p>GT Holidays Pvt LTD,<br>No.1, Gemini Parsn,<br>Kodambakkam High Road,<br>Nungambakkam, Chennai –
+            600006<br>Tamil Nadu, India.</p>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Our Branches</h5>
+          <hr class="border-light">
+          <ul class="list-unstyled small">
+            <li>Mumbai</li>
+            <li>Hyderabad</li>
+            <li>Bangalore</li>
+            <li>Chennai</li>
+            <li>Coimbatore</li>
+            <li>Erode</li>
+            <li>Madurai</li>
+            <li>Trichy</li>
+            <li>Salem</li>
+            <li>Kochi</li>
+            <li>Vellore</li>
+            <li>Pondicherry</li>
+            <li>Nagercoil</li>
+            <li>Kanyakumari</li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Contact Us</h5>
+          <hr class="border-light">
+          <p><strong>Call:</strong> <br><a href="tel:+919940882200" class="text-white">+91 9940882200</a></p>
+          <p><strong>Email:</strong> <br><a href="mailto:thamaraiselvamc@gtholidays.in"
+              class="text-white">ts@gtholidays.in</a>
+          </p>
+          <div class="mt-3">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-google"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center pt-3 border-top mt-3">
+        <small>&copy; 2025 by GT Holidays Pvt Ltd. All Rights Reserved.</small> |
+        <a href="#" class="text-white text-decoration-none">Privacy Policy</a> |
+        <a href="#" class="text-white text-decoration-none">Terms & Conditions</a> |
+        <a href="#" class="text-white text-decoration-none">Cancellation & Refund Policy</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script src="./js/email.js"></script>
+  <script src="./js/bookings.js"></script>
+</body>
+
+</html>

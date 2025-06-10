@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home-GT Holidays</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="icon" type="image/png" href="./images/favicon-32x32.png" />
+
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="./images/Logo.jpg" alt="Logo" class="rounded float-start">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="cart.html">
+              <i class="bi bi-cart-fill fs-5"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                id="cartCountBadge">
+                0
+              </span>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Carousel -->
+  <div class="container-fluid p-0 m-0">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <img src="./images/slider1.jpeg" class="d-block w-100" alt="Beach View">
+          <div class="carousel-caption d-block">
+            <h5 class="fw-bold text-warning display-6">Explore Exotic Destinations</h5>
+            <p class="text-light">Plan your dream getaway with stunning beach views and unforgettable sunsets.</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="./images/slider2.jpeg" class="d-block w-100" alt="Mountain View">
+          <div class="carousel-caption d-block">
+            <h5 class="fw-bold text-warning display-6">Experience City Adventures</h5>
+            <p class="text-light">Shop, dine, and explore the vibrant life in top urban destinations.</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="./images/slider3.jpeg" class="d-block w-100" alt="City Lights">
+          <div class="carousel-caption d-block">
+            <h5 class="fw-bold text-warning display-6">Discover the Mountains</h5>
+            <p class="text-light">Breathe in fresh air, hike trails, and enjoy panoramic mountain scenery.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+
+
+  <!-- Destinations Section -->
+  <div class="container mt-5">
+    <!-- Title and Button on Same Line -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0">Top Destinations</h2>
+      <!-- View More Destinations Button -->
+      <a href="./destinations.html" class="btn btn-outline-primary">View More Destinations</a>
+    </div>
+
+    <!-- Destination Cards -->
+    <div class="row g-4">
+      <div class="col-md-4"
+        onclick="descshowDetails('Paris', 'images/paris.jpg', 'Experience the charm of the Eiffel Tower and the streets of romance.')">
+        <div class="card h-100 shadow-sm">
+          <img src="images/paris.jpg" class="card-img-top" alt="Paris">
+          <div class="card-body">
+            <h5 class="card-title">Paris</h5>
+            <p class="card-text">Experience the charm of the Eiffel Tower and the streets of romance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4"
+        onclick="descshowDetails('Maldives', 'images/maldives.jpg', 'Relax on pristine beaches and enjoy luxury resorts on the Indian Ocean.')">
+        <div class="card h-100 shadow-sm">
+          <img src="images/maldives.jpg" class="card-img-top" alt="Maldives">
+          <div class="card-body">
+            <h5 class="card-title">Maldives</h5>
+            <p class="card-text">Relax on pristine beaches and enjoy luxury resorts on the Indian Ocean.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4"
+        onclick="descshowDetails('Singapore', 'images/singapore.jpg', 'Blend of modernity and nature with top attractions like Marina Bay Sands.')">
+        <div class="card h-100 shadow-sm">
+          <img src="images/singapore.jpg" class="card-img-top" alt="Singapore">
+          <div class="card-body">
+            <h5 class="card-title">Singapore</h5>
+            <p class="card-text">Blend of modernity and nature with top attractions like Marina Bay Sands.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4"
+        onclick="descshowDetails('Dubai', 'images/dubai.jpg', 'Visit the Burj Khalifa, shop in mega malls, and enjoy desert adventures.')">
+        <div class="card h-100 shadow-sm">
+          <img src="images/dubai.jpg" class="card-img-top" alt="Dubai">
+          <div class="card-body">
+            <h5 class="card-title">Dubai</h5>
+            <p class="card-text">Visit the Burj Khalifa, shop in mega malls, and enjoy desert adventures.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4"
+        onclick="descshowDetails('Bali', 'images/bali.jpg', 'A tropical paradise with rice terraces, beaches, and spiritual culture.')">
+        <div class="card h-100 shadow-sm">
+          <img src="images/bali.jpg" class="card-img-top" alt="Bali">
+          <div class="card-body">
+            <h5 class="card-title">Bali</h5>
+            <p class="card-text">A tropical paradise with rice terraces, beaches, and spiritual culture.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4"
+        onclick="descshowDetails('Switzerland', 'images/switzerland.jpg', 'Snowy Alps, scenic trains, and serene lakes await in this dream destination.')">
+        <div class="card h-100 shadow-sm">
+          <img src="images/switzerland.jpg" class="card-img-top" alt="Switzerland">
+          <div class="card-body">
+            <h5 class="card-title">Switzerland</h5>
+            <p class="card-text">Snowy Alps, scenic trains, and serene lakes await in this dream destination.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages section -->
+  <div class="container py-5">
+    <!-- Title and Button on Same Line -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0">Top Packages</h2>
+      <a href="./packages.html" class="btn btn-outline-primary">View More Packages</a>
+    </div>
+
+    <div class="row g-4">
+      <!-- Maldives Honeymoon -->
+      <div class="col-md-4 d-flex">
+        <div class="card h-100 shadow rounded-4 border-0 d-flex flex-column">
+          <img src="images/maldives.jpg" class="card-img-top" alt="Maldives Honeymoon" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Maldives Honeymoon</h5>
+            <p class="card-text" title="5 Nights | Flights + Hotels + Activities. Starting from ₹89,999/person.">5
+              Nights | Flights + Hotels + Activities. Starting from ₹89,999/person.</p>
+            <div class="d-grid gap-2 mt-auto">
+              <a href="#" class="btn btn-primary w-100">Explore</a>
+              <button class="btn btn-outline-success w-100 add-to-cart-btn"
+                onclick="addToCart({ id: 1, name: 'Maldives Honeymoon', price: 89999 })">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- European Explorer -->
+      <div class="col-md-4 d-flex">
+        <div class="card h-100 shadow rounded-4 border-0 d-flex flex-column">
+          <img src="images/european.jpeg" class="card-img-top" alt="European Explorer" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">European Explorer</h5>
+            <p class="card-text" title="10 Days | Multi-city Tour. Starting from ₹1,50,000/person.">10 Days | Multi-city
+              Tour. Starting from ₹1,50,000/person.</p>
+            <div class="d-grid gap-2 mt-auto">
+              <a href="#" class="btn btn-primary w-100">Explore</a>
+              <button class="btn btn-outline-success add-to-cart-btn w-100"
+                onclick="addToCart({ id: 2, name: 'European Explorer', price: 150000 })">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dubai Adventure -->
+      <div class="col-md-4 d-flex">
+        <div class="card h-100 shadow rounded-4 border-0 d-flex flex-column">
+          <img src="images/dubai.jpg" class="card-img-top" alt="Dubai Adventure" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Dubai Adventure</h5>
+            <p class="card-text" title="7 Nights | Desert Safari + City Tour. Starting from ₹75,000/person.">7 Nights |
+              Desert Safari + City Tour. Starting from ₹75,000/person.</p>
+            <div class="d-grid gap-2 mt-auto">
+              <a href="#" class="btn btn-primary w-100">Explore</a>
+              <button class="btn btn-outline-success w-100 add-to-cart-btn"
+                onclick="addToCart({ id: 3, name: 'Dubai Adventure', price: 75000 })">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Welcome content -->
+
+  <div class="container py-5">
+    <section class="banner">
+      <img src="./images/GT-Holidays-Travel-Company-in-South-India.jpeg" alt="GT Holidays Banner" class="img-fluid" />
+    </section>
+
+    <h2 class="mb-4">Welcome to GT Holidays</h2>
+    <p>
+      GT Holidays Pvt. Ltd. is a subsidiary of the Sangam Group of Hotels, one of the largest hotel chains in South
+      Tamil
+      Nadu.
+      Founded in 1968, the Sangam Group has been known for over four decades for its impeccable service and exceptional
+      hospitality, currently operating 19 properties across Tamil Nadu.
+    </p>
+    <p>
+      Built on this strong foundation, GT Holidays aims to deliver exceptional customer satisfaction and memorable
+      holiday
+      experiences. Whether you're planning a once-in-a-lifetime vacation or an annual corporate retreat, GT Holidays is
+      your go-to travel partner.
+    </p>
+    <p>
+      As one of the leading destination management companies in South India, we have the experience and infrastructure
+      to
+      meet every customer’s need. Our services include corporate tours, incentive trips, college and school excursions,
+      business travel arrangements, car/railway and hotel bookings, and much more.
+    </p>
+    <p>
+      Discover what sets GT Holidays apart from the rest—our dedication to excellence and our commitment to making your
+      travel dreams a reality.
+    </p>
+  </div>
+
+  <!-- Highlight sections -->
+  <div class="container mt-5">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-body">
+            <i class="bi bi-person-check display-5 text-warning mb-3"></i>
+            <h5 class="card-title">50,000+ Abroad Trips</h5>
+            <p class="card-text">For the last decade, GT Holidays has organized more than 50,000 international
+              itineraries.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-body">
+            <i class="bi bi-geo-alt display-5 text-warning mb-3"></i>
+            <h5 class="card-title">Handcrafted Experiences</h5>
+            <p class="card-text">Each and every itinerary is customized according to the taste of the customers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 text-center shadow-sm">
+          <div class="card-body">
+            <i class="bi bi-emoji-smile display-5 text-warning mb-3"></i>
+            <h5 class="card-title">Extremely Happy Travellers</h5>
+            <p class="card-text">GT Holidays holds record of great customer satisfaction and all customers are retained
+              with us.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Destination Detail Modal -->
+  <div class="modal fade" id="destinationModal" tabindex="-1" aria-labelledby="destinationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="destinationModalLabel">Destination Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body text-center">
+          <img id="destinationImg" src="" alt="" class="mb-3 rounded">
+          <p id="destinationDesc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Duplicate Item Alert Modal -->
+  <div class="modal fade" id="duplicateItemModal" tabindex="-1" aria-labelledby="duplicateItemModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-body">
+          <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="Warning" style="width: 20%;">
+          <h6 class="mt-3 text-danger" id="duplicateItemModalLabel">Item already in bookings!</h6>
+          <p class="text-muted mb-3">This tour has already been added to your booking cart.</p>
+          <button type="button" class="btn btn-outline-primary btn-sm" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal-dialog">
+      <div class="modal-content custom-modal-content text-center">
+        <div class="modal-body">
+          <div class="modal-icon-wrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Success" class="modal-icon" />
+          </div>
+          <h6 class="modal-title text-success" id="successModalLabel">Subscription Successful!</h6>
+          <p class="modal-text">Thank you for subscribing to <strong>GT Holidays</strong>.</p>
+          <button type="button" class="btn btn-success btn-sm modal-button" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <section class="bg-light py-5 border-top mt-5">
+    <div class="container text-center">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-md-start mb-3 mb-md-0">
+          <h5 class="mb-1">Get Updates & More</h5>
+          <small class="text-muted">Thoughtful thoughts to your inbox</small>
+        </div>
+        <div class="col-md-6">
+          <form class="d-flex justify-content-center justify-content-md-end"
+            onsubmit="sendNewsletterSubscription(event)">
+            <input type="email" class="form-control me-2 w-50" placeholder="Your Email" id="newsletterEmail" required
+              name="to_email">
+            <button type="submit" class="btn btn-dark">SUBSCRIBE</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container text-md-start text-center">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <h5>Corporate Office</h5>
+          <hr class="border-light">
+          <p>GT Holidays Pvt LTD,<br>Novel Tech Park,<br>Opposite to 1 MG Mall,<br>MG Road, Bangalore –
+            560042<br>Karnataka, India.</p>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Head Office</h5>
+          <hr class="border-light">
+          <p>GT Holidays Pvt LTD,<br>No.1, Gemini Parsn,<br>Kodambakkam High Road,<br>Nungambakkam, Chennai –
+            600006<br>Tamil Nadu, India.</p>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Our Branches</h5>
+          <hr class="border-light">
+          <ul class="list-unstyled small">
+            <li>Mumbai</li>
+            <li>Hyderabad</li>
+            <li>Bangalore</li>
+            <li>Chennai</li>
+            <li>Coimbatore</li>
+            <li>Erode</li>
+            <li>Madurai</li>
+            <li>Trichy</li>
+            <li>Salem</li>
+            <li>Kochi</li>
+            <li>Vellore</li>
+            <li>Pondicherry</li>
+            <li>Nagercoil</li>
+            <li>Kanyakumari</li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Contact Us</h5>
+          <hr class="border-light">
+          <p><strong>Call:</strong> <br><a href="tel:+919940882200" class="text-white">+91 9940882200</a></p>
+          <p><strong>Email:</strong> <br><a href="mailto:thamaraiselvamc@gtholidays.in"
+              class="text-white">ts@gtholidays.in</a>
+          </p>
+          <div class="mt-3">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-google"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center pt-3 border-top mt-3">
+        <small>&copy; 2025 by GT Holidays Pvt Ltd. All Rights Reserved.</small> |
+        <a href="#" class="text-white text-decoration-none">Privacy Policy</a> |
+        <a href="#" class="text-white text-decoration-none">Terms & Conditions</a> |
+        <a href="#" class="text-white text-decoration-none">Cancellation & Refund Policy</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script src="./js/email.js"></script>
+  <script src="./js/bookings.js"></script>
+  <script src="./js/destinations.js"></script>
+  <script src="./js/package.js"></script>
+</body>
+
+</html>
